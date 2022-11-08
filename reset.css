@@ -6,6 +6,8 @@
     box-sizing: border-box;
     background: transparent;
     font-family: inherit;
+    scroll-behavior: smooth;
+    text-decoration: none;
   }
   a{
     text-decoration: none;

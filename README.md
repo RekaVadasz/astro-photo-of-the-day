@@ -4,5 +4,4 @@ The project uses the APOD (Astronomy Picture of the Day) API created by NASA to 
  
 Earlier dates can be picked as well. Gallery shows the photos of the previous three days.
 
-
-![](images/Screenshot%202022-09-21%20113807.jpg)
+![project4](https://user-images.githubusercontent.com/102370224/200895765-8fef1a79-384d-48e0-95e3-d8673d2022ee.png)

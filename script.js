@@ -41,13 +41,15 @@ const headerComponent = function (dateInput){    //date min: first photo of the 
     //console.log(currentDate());
     return `
     <header>  
-        <a href="#"><img src="./images/logo.png"/>  
-        <ul>
-            <li>Photo of the Day</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="https://api.nasa.gov/" target="_blank">NASA APIs</a></li>
-            <li><a href="#gallery">Gallery</a></li>
-        </ul>    
+        <div class="header-container">
+            <a href="#"><img src="./images/logo.png"/>
+            <ul>
+                <li>PHOTO OF THE DAY</a></li>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="https://api.nasa.gov/" target="_blank">NASA APIs</a></li>
+                <li><a href="#gallery">GALLERY</a></li>
+            </ul>
+        </div>
     </header>    
     `
 }
@@ -104,6 +106,22 @@ const videoCardComponent = function (title, url, explanation){
     `
 }
 
+const aboutComponent = function () {
+    return`
+    <div class="about" id="about">
+        <div>
+            <img src="./images/pelican_nebula.jpg" alt="stars"/>
+        </div>
+        <div>
+            <h3>NASA Astronomy Picture of the Day</h3>
+            <h2>About</h2>
+            <p>One of the most popular websites at NASA is the <a href="https://apod.nasa.gov/apod/">Astronomy Picture of the Day</a>. In fact, this website is one of the most popular websites across all federal agencies. It has the popular appeal of a Justin Bieber video. This endpoint structures the APOD imagery and associated metadata so that it can be repurposed for other applications. In addition, if the concept_tags parameter is set to True, then keywords derived from the image explanation are returned. These keywords could be used as auto-generated hashtags for twitter or instagram feeds; but generally help with discoverability of relevant imagery.</br>
+            The full documentation for this API can be found in the <a href="https://github.com/nasa/apod-api">APOD API Github repository</>.</p>
+        </div>
+    </div>
+    `
+}
+
 const galleryComponent = function (date1, src1, date2, src2, date3, src3) {
     return`
     <div id="gallery">
@@ -146,6 +164,7 @@ const loadEvent = function (){
     rootElement.insertAdjacentHTML("beforeend", headerComponent(`${currentDate()}`)); // load page with current date as default input
     rootElement.insertAdjacentHTML("beforeend", alertComponent());
     rootElement.insertAdjacentHTML("beforeend", photoContainerComponent(`${currentDate()}`));
+    rootElement.insertAdjacentHTML("beforeend", aboutComponent());
 
     // ----------create variables for DOM components----------
     const dateSearch = document.getElementById("date");
@@ -263,6 +282,12 @@ const loadEvent = function (){
     }    
 
     getPhotos(); //call function to create gallery at load
+    
+    const header = document.querySelector("header");
+    
+    window.addEventListener("scroll", function() {
+        header.classList.toggle("sticky", window.scrollY > 0);
+    })
 }
 
-window.addEventListener("load", loadEvent)
+window.addEventListener("load", loadEvent);

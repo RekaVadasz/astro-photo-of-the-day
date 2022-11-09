@@ -2,7 +2,7 @@
 body {
   background: #000000;
   color: #ffffff;
-  font-family: "Poppins", sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 body #root {
@@ -12,10 +12,22 @@ body #root {
 
 body #root header {
   width: 100%;
-  padding: 20px 18%;
   position: fixed;
   top: 0;
   right: 0;
+  background: #000000;
+  z-index: 1000;
+}
+
+body #root header.sticky {
+  -webkit-box-shadow: 18px 0px 77px 0px rgba(255, 255, 255, 0.23);
+          box-shadow: 18px 0px 77px 0px rgba(255, 255, 255, 0.23);
+}
+
+body #root header .header-container {
+  width: 1200px;
+  height: 100px;
+  margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -25,43 +37,58 @@ body #root header {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  background: #000000;
-  z-index: 1000;
 }
 
-body #root header:hover {
-  -webkit-box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.979);
-          box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.979);
-}
-
-body #root header img {
+body #root header .header-container img {
   width: 90px;
   height: auto;
+  -webkit-transition: ease 0.50s;
+  transition: ease 0.50s;
 }
 
-body #root header ul {
+body #root header .header-container img:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
+body #root header .header-container ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-body #root header ul li {
+body #root header .header-container ul li {
   position: relative;
   list-style: none;
 }
 
-body #root header ul li a {
+body #root header .header-container ul li a {
   padding: 10px 27px;
+  position: relative;
   -webkit-transition: ease .50s;
   transition: ease .50s;
 }
 
-body #root header ul li a:hover {
+body #root header .header-container ul li a::after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  display: none;
   border: 2px solid #ffffff;
+  -webkit-transition: ease .40s;
+  transition: ease .40s;
+}
+
+body #root header .header-container ul li a:hover::after {
+  display: block;
 }
 
 body #root .apod {
-  padding: 180px 18% 100px;
+  width: 1200px;
+  margin: 180px auto 100px;
 }
 
 body #root .apod form {
@@ -72,7 +99,7 @@ body #root .apod form {
 }
 
 body #root .apod form input {
-  padding: 8px;
+  padding: 8.5px;
   border: 2px solid #ffffff;
   color-scheme: dark;
 }
@@ -94,7 +121,8 @@ body #root .apod #photo-card h2, body #root .apod #video-card h2 {
 }
 
 body #root .apod #photo-card p, body #root .apod #video-card p {
-  line-height: 1.6;
+  line-height: 1.3;
+  font-weight: 300;
 }
 
 body #root .apod #photo-card .apod-img, body #root .apod #video-card .apod-img {
@@ -107,8 +135,51 @@ body #root .apod #photo-card .apod-img img, body #root .apod #video-card .apod-i
   display: block;
 }
 
+body #root .about {
+  width: 1200px;
+  padding-top: 180px;
+  margin: 0 auto 100px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 4rem;
+}
+
+body #root .about img {
+  width: 100%;
+  display: block;
+}
+
+body #root .about h3 {
+  margin-bottom: 30px;
+  text-align: right;
+  font-weight: 300;
+}
+
+body #root .about h2 {
+  margin-bottom: 57px;
+  text-align: right;
+  font-size: 32px;
+  font-weight: 500;
+}
+
+body #root .about p {
+  line-height: 1.3;
+  font-weight: 300;
+  text-align: right;
+}
+
+body #root .about p a {
+  text-decoration: underline;
+}
+
 body #root #gallery {
-  padding: 20px 18% 100px;
+  width: 1200px;
+  margin: 20px auto 100px;
 }
 
 body #root #gallery h2 {
@@ -129,13 +200,38 @@ body #root #gallery #photo-container {
           align-items: center;
 }
 
-body #root #gallery #photo-container img, body #root #gallery #photo-container iframe {
-  max-width: 100%;
-  width: 550px;
-  height: auto;
+body #root #gallery #photo-container div {
+  height: 255px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+body #root #gallery #photo-container div:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+body #root #gallery #photo-container div p {
+  font-size: 16px;
+  padding: 10px 0 10px;
+}
+
+body #root #gallery #photo-container div img {
+  width: 100%;
+  height: 100%;
   display: block;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+body #root #gallery #photo-container div iframe {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 19px;
 }
 
 body div.modal {
